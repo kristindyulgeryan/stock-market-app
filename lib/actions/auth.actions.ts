@@ -17,18 +17,22 @@ export const signUpWithEmail = async ({
       body: { email, password, name: fullName },
     });
 
-    if (response) {
-      await inngest.send({
-        name: "app/user.created",
-        data: {
-          email,
-          name: fullName,
-          country,
-          investmentGoals,
-          riskTolerance,
-          preferredIndustry,
-        },
-      });
+    try {
+      if (response) {
+        await inngest.send({
+          name: "app/user.created",
+          data: {
+            email,
+            name: fullName,
+            country,
+            investmentGoals,
+            riskTolerance,
+            preferredIndustry,
+          },
+        });
+      }
+    } catch (emailError) {
+      console.warn("Email failed, but signup ok:", emailError);
     }
 
     return { success: true, data: response };
