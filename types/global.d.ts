@@ -215,6 +215,13 @@ declare global {
     threshold: number;
     changePercent?: number;
   };
+
+  type WatchlistItem = {
+    userId: string;
+    symbol: string;
+    company: string;
+    addedAt: Date;
+  };
 }
 
 export {};
