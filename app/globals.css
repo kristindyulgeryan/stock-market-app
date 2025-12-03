@@ -449,6 +449,8 @@
   width: 100% !important;
 }
 
+/* Ensure the container for custom charts has padding/spacing so styles apply
+   even when the TradingView embed injects its own iframe. */
 .custom-chart.tradingview-widget-container iframe {
   border: 1px solid #30333a;
   border-radius: 8px !important;
